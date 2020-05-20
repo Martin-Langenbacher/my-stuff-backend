@@ -13,11 +13,11 @@ public class ItemController {
 	@Autowired
 	private ItemRepository itemRepository;
 	
-	@GetMapping("/items")
+	@GetMapping("/api/v1/items")
 	public String index(Model model) {
 		model.addAllAttributes(itemRepository.findAll());
 		//model.addAllAttributes("items", itemRepository.findAll());
-		return "all_items";
+		return "items";
 	}
 	
 
