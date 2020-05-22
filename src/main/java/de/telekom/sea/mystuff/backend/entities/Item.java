@@ -1,5 +1,6 @@
-package mystuff.entities;
+package de.telekom.sea.mystuff.backend.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Entity
 public class Item {
 	
+	// variablen	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,7 +24,24 @@ public class Item {
 	int amount;
 	String location;
 	String description;
-	Date lastUsed;
+	//Date lastUsed
+	LocalDate lastUsed;
+	
+	
+	// constructor
+	public Item(String name, int amount, String dateString, String location, String description) {
+		this.lastUsed = LocalDate.parse(dateString);
+		this.amount = amount;
+		this.name = name;
+		this.description = description;
+		this.location = location;
+	}
+	
+	
+	public Item() {
+		super();
+	}
+	
 
 }
 

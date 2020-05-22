@@ -1,4 +1,4 @@
-package mystuff.repository;
+package de.telekom.sea.mystuff.backend.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import mystuff.entities.Item;
+import de.telekom.sea.mystuff.backend.entities.Item;
 
 //
 //Achtung !  ------> hier muss INTERFACE: "interface" stehen !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

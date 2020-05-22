@@ -1,4 +1,4 @@
-package mystuff.controller;
+package de.telekom.sea.mystuff.backend.controller;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package mystuff.backend.config;
+package de.telekom.sea.mystuff.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
