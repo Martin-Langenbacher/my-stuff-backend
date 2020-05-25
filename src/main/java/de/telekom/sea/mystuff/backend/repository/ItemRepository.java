@@ -18,8 +18,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	//public List<Item> findById(String items);
 	//public Optional<Item> findById(Long id);
 	
-	
-	
+	// es ist leer, weil vieles bereits im JPA existiert !!! --> Es ist also wichtig!
 
 }
 

@@ -1,16 +1,20 @@
 package de.telekom.sea.mystuff.backend.entities;
 
 import java.time.LocalDate;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -38,12 +42,34 @@ public class Item {
 	}
 	
 	
+	/* --> raus wegen NoArgsConstructor!!!!
 	public Item() {
 		super();
-	}
+	} */
+
+	
+	
+	/*
+	 * 
+	 * public Task build() {
+        return new Task(id,summary, description,done, dueDate);
+    }
+	 * 
+	 * 
+	 */
+
+
 	
 
 }
+
+
+/*
+Was macht Lombok:
+--> Lombok macht die Annotations im Compile-Step...
+
+
+*/
 
 
 

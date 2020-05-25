@@ -1,4 +1,4 @@
-package de.telekom.sea.mystuff2.controller;
+package de.telekom.sea.mystuff.backend.controller;
 
 public class URIsyntaxException extends Exception {
 

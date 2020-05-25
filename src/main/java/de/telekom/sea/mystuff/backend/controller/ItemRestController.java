@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import de.telekom.sea.mystuff.backend.entities.Item;
 import de.telekom.sea.mystuff.backend.repository.ItemRepository;
 
+
+// es würde auch mit funktionieren: @RequestMapping("/api/v1/items/") ==> und die items unten weglassen !!!
+
 @RestController
 @RequestMapping("/api/v1/")
 public class ItemRestController {
@@ -55,8 +58,7 @@ public class ItemRestController {
 
 		/*
 		 * --> Dieser Teil wurde durch die Lambda version ersetzt!!! //
-		 * =============================================================================
-		 * ============================
+		 * =========================================================================================================
 		 * 
 		 * Optional<Item> ergebnis = repository.findById(id); return
 		 * ergebnis.orElseThrow(new Supplier<ResourceNotFoundException>() {
@@ -67,8 +69,7 @@ public class ItemRestController {
 
 		/*
 		 * ---> alte Version !!! //
-		 * =============================================================================
-		 * ============================
+		 * =========================================================================================================
 		 * 
 		 * 
 		 * //return repository.findById(id); Optional<Item> ergebnis =
@@ -81,12 +82,14 @@ public class ItemRestController {
 		 */
 	}
 
+	
 	@PostMapping("items")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Item newItem(@RequestBody Item newItem) {
 		return repository.save(newItem);
 	}
 
+	
 	@PutMapping("items/{id}")
 	public Item replace(@RequestBody Item newItem, @PathVariable Long id) {
 		return (Item) repository.findById(id).map(item -> {
@@ -99,7 +102,18 @@ public class ItemRestController {
 
 		}).orElseThrow(() -> new ResourceNotFoundException(id));
 	}
+	
+	
+	//.orElseThrow()) -> {throw new ResponseStatusException(HttpStatus.NOT_fOUND);});
+	// ALTERNATIVE: ==> return item.orElseThrow()) -> {throw new ResponseStatusException(HttpStatus.NOT_fOUND);});
 
+	/*
+	
+	
+	
+	*/
+	
+	
 	@DeleteMapping("items/{id}")
 	public void delete(@PathVariable Long id) {
 		try {
