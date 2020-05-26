@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import de.telekom.sea.mystuff.backend.entities.Item;
 import de.telekom.sea.mystuff.backend.repository.ItemRepository;
@@ -56,8 +57,10 @@ public class ItemRestController {
 
 	@GetMapping("items/{id}")
 	public Item get(@PathVariable Long id) {
-		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
-
+		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		// ALTERNATIVA: --> return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+		
+		
 		/*
 		 * --> Dieser Teil wurde durch die Lambda version ersetzt!!! //
 		 * =========================================================================================================
