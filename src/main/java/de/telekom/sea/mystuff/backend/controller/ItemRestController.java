@@ -2,6 +2,8 @@ package de.telekom.sea.mystuff.backend.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -115,9 +117,10 @@ public class ItemRestController {
 	
 	
 	@DeleteMapping("items/{id}")
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable Long id, HttpServletResponse deleteResponse) {
 		try {
 			repository.deleteById(id);
+			deleteResponse.setStatus(HttpServletResponse.SC_NO_CONTENT);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException(id);
 		}
