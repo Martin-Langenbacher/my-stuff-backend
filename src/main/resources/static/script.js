@@ -27,7 +27,7 @@ async function renderList() {
         <th scope="col">Description</th>
         <th scope="col"></th>
         <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col"><button type="button" class="btn btn-success btn-sm">Create</button></th>
       </tr>
     </thead>
     <tbody>
