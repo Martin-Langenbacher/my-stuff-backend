@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import de.telekom.sea.mystuff.backend.repository.ItemRepository;
 // es würde auch mit funktionieren: @RequestMapping("/api/v1/items/") ==> und die items unten weglassen !!!
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/")
 public class ItemRestController {
 
@@ -55,10 +57,10 @@ public class ItemRestController {
 	// (Optional-Supplier): --->
 	// https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#orElseThrow-java.util.function.Supplier-
 
-	@GetMapping("items/{id}")
+	@GetMapping("item/{id}")
 	public Item get(@PathVariable Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		// ALTERNATIVA: --> return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+		// ALTERNATIVE: --> return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
 		
 		
 		/*
@@ -95,7 +97,7 @@ public class ItemRestController {
 	}
 
 	
-	@PutMapping("items/{id}")
+	@PutMapping("item/{id}")
 	public Item replace(@RequestBody Item newItem, @PathVariable Long id) {
 		return (Item) repository.findById(id).map(item -> {
 			item.setName(newItem.getName());
@@ -119,8 +121,22 @@ public class ItemRestController {
 	*/
 	
 	
-	@DeleteMapping("items/{id}")
+	@DeleteMapping("item/{id}")
 	public void delete(@PathVariable Long id, HttpServletResponse deleteResponse) {
+		
+		
+		
+		/* to slow down the process, to show why to need an asyncron function
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		*/
+		
+		
+		
 		try {
 			repository.deleteById(id);
 			deleteResponse.setStatus(HttpServletResponse.SC_NO_CONTENT);

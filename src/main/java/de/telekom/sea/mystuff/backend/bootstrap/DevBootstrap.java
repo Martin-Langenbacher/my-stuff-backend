@@ -31,15 +31,20 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
 
 	private void initData() {
 		// Computer, Monitor, Büroklammer...
-		Item item1 = new Item("Computer", 2, "2020-05-22", "Büro", "Diesen Computer benutze ich im HomeOffice.");
-		Item item2 = new Item("Monitor", 1, "2019-12-14", "Büro", "Monitor zum Computer.");
-		Item item3 = new Item("Büroklammern", 122, "2018-01-02", "Büro", "Um etwas zusammen zu heften.");
-	
 		
+		for (int i = 0; i < 10; i++) {
+			Item item1 = new Item("Computer", 2, "2020-05-22", "Büro", "Diesen Computer benutze ich im HomeOffice.");
+			Item item2 = new Item("Monitor", 1, "2019-12-14", "Büro", "Monitor zum Computer.");
+			Item item3 = new Item("Büroklammern", 122, "2018-01-02", "Büro", "Um etwas zusammen zu heften.");
+			Item item4 = new Item("Computer-Maus", 3, "2020-05-27", "Keller", "Hier ist ein etwas längerer Text um das Programm zu testen. Die Maus ist nur ein Item, das eben da ist und nicht benutzt wird. Im Keller ist es auch nicht. Hier ist nun aber wirklich Schluß mit der Erklärung!");
+			
+			
+			this.itemRepository.save(item1);
+			this.itemRepository.save(item2);
+			this.itemRepository.save(item3);
+			this.itemRepository.save(item4);
+		}
 		
-		this.itemRepository.save(item1);
-		this.itemRepository.save(item2);
-		this.itemRepository.save(item3);
 		
 		// Tip:
 		// Date.valueOf("2019-11-23");

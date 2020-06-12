@@ -74,7 +74,7 @@ class ItemRestControllerTest {
 		lawnMover.setId(response.getBody().getId());
 		assertThat(response.getBody()).isEqualToComparingFieldByField(lawnMover);
 		
-		assertThat(response.getBody()).isEqualToComparingOnlyGivenFields(lawnMover, "name", "description", "location", "amount", "lastUsed");		
+		assertThat(response.getBody()).isEqualToComparingOnlyGivenFields(lawnMover, "description", "name", "location", "amount", "lastUsed");		
 	}
 	
 	
